@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="md-4 text-primary">Add contact</h1>
+
+    <div id="contact-form">
+        {% include 'partials/form.html' %}
+    </div>
+    <div class="my-4">
+        <button class="btn btn-success me-2" type="button"
+        hx-get="{% url 'create-contact' %}"
+            hx-target="#contact-form"
+            hx-swap="beforeend">+ Add Contact</button>
+
+        <button type="button" class="btn btn-primary" id="submit-all">
+            Submit All
+        </button>
+    </div>
+    <div id="contact-list">
+        {% for contact in contacts %}
+            {% include 'partials/contact.html' %}
+        {% endfor %}
+    </div>
+{% endblock %}
